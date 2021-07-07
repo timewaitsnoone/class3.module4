@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: lagou-cloud-hystrix-dashboard
+server:
+  port: 29000
+eureka:
+  client:
+    service-url:
+      defaultZone: http://LagouCloudEurekaServerA:8761/eureka,http://LagouCloudEurekaServerB:8762/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@

@@ -1,0 +1,46 @@
+server:
+  port: 28081
+spring:
+  application:
+    name: lagou-service-resume
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:9998/lagou?characterEncoding=UTF-8
+    username: root
+    password: 123456
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  cloud:
+    config:
+      name: lagou-service-resume
+      profile: dev
+      label: main
+      uri: http://localhost:29003
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+#mysql:
+#  url: jdbc:mysql://localhost:9998/lagou?characterEncoding=UTF-8
+#lagou:
+#  message: hello lagou,100
+eureka:
+  client:
+    service-url:
+      defaultZone: http://LagouCloudEurekaServerA:8761/eureka,http://LagouCloudEurekaServerB:8762/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@
+    metadata-map:
+      cluster: cl1
+      region: rn1
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -25,8 +25,8 @@
                 var email = $("#reg-email").val();
                 var password = $("#reg-password").val();
                 $.ajax({
-                     //url: "http://localhost:9002/api/user/login/"+email+"/"+password,
-                    url: "http://www.test.com/api/user/login/"+email+"/"+password,
+                     url: "http://localhost:9002/api/user/login/"+email+"/"+password,
+                    //url: "http://www.test.com/api/user/login/"+email+"/"+password,
                     type: "GET",
                     success:function (data) {
                         if(data == "false"){
